@@ -1,5 +1,3 @@
-import React from "react";
-
 const Status = ({ status }: { status: String }) => {
   if (status === "success") {
     return <p>File uploaded successfully</p>;

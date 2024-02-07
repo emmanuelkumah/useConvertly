@@ -6,6 +6,7 @@ const FileUploader = () => {
   const [status, setStatus] = useState<
     "initial" | "uploading" | "success" | "fail"
   >("initial");
+  const [fileID, setFileID] = useState<String | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -17,14 +18,24 @@ const FileUploader = () => {
       setStatus("uploading");
       const formData = new FormData();
       formData.append("File", file);
+
+      const url = "https://conversion-tools.p.rapidapi.com/files";
+
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: import.meta.env.VITE_API_KEY,
+          "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+          "X-RapidAPI-Host": "conversion-tools.p.rapidapi.com",
+        },
+        body: formData,
+      };
       //try connecting to server
       try {
-        const result = await fetch("https://httpbin.org/post", {
-          method: "POST",
-          body: formData,
-        });
+        const result = await fetch(url, options);
         const data = await result.json();
         console.log(data);
+        setFileID(data.file_id);
         setStatus("success");
       } catch (error) {
         console.log(error);
@@ -32,6 +43,7 @@ const FileUploader = () => {
       }
     }
   };
+
   return (
     <div>
       <label htmlFor="file">Choose a file </label>
