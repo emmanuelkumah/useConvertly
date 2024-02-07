@@ -11,6 +11,14 @@ function App() {
   const [fileID, setFileID] = useState<String | null>(null);
 
   const baseURL = "https://conversion-tools.p.rapidapi.com/";
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: import.meta.env.VITE_API_KEY,
+      "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+      "X-RapidAPI-Host": "conversion-tools.p.rapidapi.com",
+    },
+  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -25,18 +33,10 @@ function App() {
       const formData = new FormData();
       formData.append("File", selectedFile);
       const url = `${baseURL}files`;
-      const options = {
-        method: "POST",
-        headers: {
-          Authorization: import.meta.env.VITE_API_KEY,
-          "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
-          "X-RapidAPI-Host": "conversion-tools.p.rapidapi.com",
-        },
-        body: formData,
-      };
+
       //try connecting to server
       try {
-        const result = await fetch(url, options);
+        const result = await fetch(url, { ...options, body: formData });
         const data = await result.json();
         console.log(data);
         setFileID(data.file_id);
