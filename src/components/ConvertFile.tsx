@@ -1,6 +1,4 @@
-import React from "react";
-
-const ConvertFile = ({ fileID }: { fileID: string }) => {
+const ConvertFile = () => {
   return <div>ConvertFile</div>;
 };
 

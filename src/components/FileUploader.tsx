@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import Status from "./Status";
 
-const FileUploader = () => {
+type TFileProps = {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const FileUploader: React.FC<TFileProps> = ({ onChange }) => {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<
     "initial" | "uploading" | "success" | "fail"
   >("initial");
   const [fileID, setFileID] = useState<String | null>(null);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
+  //   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     onChange(e.target.files[0]);
+  //   };
   const handleFileUpload = async () => {
     if (file) {
       setStatus("uploading");
@@ -47,7 +49,7 @@ const FileUploader = () => {
   return (
     <div>
       <label htmlFor="file">Choose a file </label>
-      <input type="file" name="" id="file" onChange={handleFileChange} />
+      <input type="file" name="" id="file" onChange={onChange} />
       <ul>
         {file && (
           <section>
