@@ -12,9 +12,6 @@ const FileUploader: React.FC<TFileProps> = ({ onChange }) => {
   >("initial");
   const [fileID, setFileID] = useState<String | null>(null);
 
-  //   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     onChange(e.target.files[0]);
-  //   };
   const handleFileUpload = async () => {
     if (file) {
       setStatus("uploading");
