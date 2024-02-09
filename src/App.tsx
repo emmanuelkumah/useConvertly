@@ -1,58 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import FileUploader from "./components/FileUploader";
-import Status from "./components/Status";
+import ConvertApi from "convertapi-js";
 
 function App() {
-  const [selectedFile, setSelectedFile] = useState<File | undefined>();
+  const [selectedFile, setSelectedFile] = useState<File | string[]>();
   const [status, setStatus] = useState<
     "initial" | "uploading" | "success" | "fail"
   >("initial");
-  const [fileID, setFileID] = useState<String | null>(null);
 
-  const baseURL = "https://conversion-tools.p.rapidapi.com/";
-  const options = {
-    method: "POST",
-    headers: {
-      Authorization: import.meta.env.VITE_API_KEY,
-      "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
-      "X-RapidAPI-Host": "conversion-tools.p.rapidapi.com",
-    },
-  };
+  // useEffect(() => {
+  //   convertFile();
+  // }, [selectedFile]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
-      setSelectedFile(file);
+      convertFile(file);
+      // setSelectedFile(file);
+      //setStatus("success");
     }
   };
 
-  const handleFileUpload = async () => {
-    if (selectedFile) {
-      setStatus("uploading");
-      const formData = new FormData();
-      formData.append("File", selectedFile);
-      const url = `${baseURL}files`;
+  const convertFile = async (file: File) => {
+    let convertApi = ConvertApi.auth(import.meta.env.VITE_API_KEY);
 
-      //try connecting to server
-      try {
-        const result = await fetch(url, { ...options, body: formData });
-        const data = await result.json();
-        console.log(data);
-        setFileID(data.file_id);
-        setStatus("success");
-      } catch (error) {
-        console.log(error);
-        setStatus("fail");
-      }
+    let params = convertApi.createParams();
+    params.add("file", file);
+    try {
+      let result = await convertApi.convert("docx", "pdf", params);
+      console.log(result.files[0].Url);
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  // // Get result file URL
+  // let url = result.files[0].Url;
+
   return (
     <>
       <h2>File Conversion made easy</h2>
       <FileUploader onChange={handleFileChange} />
-      {selectedFile && <button onClick={handleFileUpload}>Upload file</button>}
-      <Status status={status} />
+      <p>{status}</p>
     </>
   );
 }
