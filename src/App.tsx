@@ -1,10 +1,14 @@
 import { useState } from "react";
 
-import { Container, Button, styled } from "@mui/material";
+import { Container, Button, Box, Typography, styled } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+
 import ConvertFile from "./components/ConvertFile";
 import ConvertApi from "convertapi-js";
 import Logo from "./components/Logo";
+import HowItWorks from "./components/HowItWorks";
+import Footer from "./components/Footer";
 
 //authorization
 
@@ -26,6 +30,21 @@ function App() {
     width: 1,
   });
 
+  const StyledBox = styled("div")(({ theme }) => ({
+    display: "grid",
+    placeItems: "center",
+    width: "90vw",
+    height: "50vh",
+    border: "5px dashed #fc372f",
+    borderRadius: "10px",
+    backgroundColor: "#f5f5f5",
+
+    [theme.breakpoints.up("md")]: {
+      width: "50vw",
+      height: "50vh",
+    },
+  }));
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(e.target.files[0]);
@@ -37,25 +56,42 @@ function App() {
     <>
       <Container maxWidth="lg">
         <Logo />
-        <section>
-          <h2>File conversion made easy</h2>
-          <p>Convert your files to any format</p>
-        </section>
-
-        <div>
-          <Button
-            component="label"
-            role={undefined}
-            variant="contained"
-            tabIndex={-1}
-            startIcon={<CloudUploadIcon />}
+        <Box sx={{ display: "grid", placeItems: "center" }}>
+          <Typography
+            variant="h3"
+            gutterBottom
+            sx={{ fontSize: "2.5rem", fontWeight: "700" }}
           >
-            Upload file
-            <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-          </Button>
-        </div>
+            File conversion made easy
+          </Typography>
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{ fontSize: "1.2rem", marginBottom: "2rem" }}
+          >
+            Converting files has never been easier. No E-Mail address. No
+            waiting
+          </Typography>
 
-        {file && <ConvertFile file={file} params={params} />}
+          <StyledBox>
+            <Button
+              component="label"
+              size="large"
+              role={undefined}
+              variant="contained"
+              tabIndex={-1}
+              startIcon={<PostAddIcon />}
+              sx={{ backgroundColor: "#fc372f" }}
+            >
+              Upload file
+              <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+            </Button>
+          </StyledBox>
+
+          {file && <ConvertFile file={file} params={params} />}
+          <HowItWorks />
+          <Footer />
+        </Box>
       </Container>
     </>
   );
