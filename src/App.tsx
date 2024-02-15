@@ -1,64 +1,58 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+import { Button, styled } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ConvertFile from "./components/ConvertFile";
 import ConvertApi from "convertapi-js";
-import "./App.css";
 
 //authorization
-let convertApi = ConvertApi.auth(import.meta.env.VITE_API_KEY);
-let params = convertApi.createParams();
+
+export const convertAPI = ConvertApi.auth(import.meta.env.VITE_API_KEY);
+let params = convertAPI.createParams();
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
-  const [fileType, setFileType] = useState<string>("");
-  const [status, setStatus] = useState<
-    "initial" | "uploading" | "success" | "fail"
-  >("initial");
+
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      // console.log(e.target.files[0]);
-      getFileType(e.target.files[0]);
       setFile(e.target.files[0]);
-      // params.add("File", e.target.files[0]);
-      // convertFile();
+      params.add("File", e.target.files[0]);
     }
   };
-
-  const getFileType = (fileDetails: any) => {
-    setFileType(fileDetails.name.split(".").pop());
-  };
-
-  /*
-  const convertFile = async () => {
-    try {
-      let result = await convertApi.convert("docx", "pdf", params);
-      console.log(result.files[0].Url);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  */
 
   return (
     <>
-      <h2>File Conversion made easy</h2>
-      <p>Convert your files to any format</p>
+      <section>
+        <h2>File conversion made easy</h2>
+        <p>Convert your files to any format</p>
+      </section>
+
       <div>
-        <label htmlFor="file">Choose a file </label>
-        <input type="file" id="file" onChange={handleFileChange} />
+        <Button
+          component="label"
+          role={undefined}
+          variant="contained"
+          tabIndex={-1}
+          startIcon={<CloudUploadIcon />}
+        >
+          Upload file
+          <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+        </Button>
       </div>
-      {file && (
-        <section>
-          File details:
-          <ul>
-            <li>Name: {file.name}</li>
-            <li>Type: {file.type}</li>
-            <li>Size: {file.size} bytes</li>
-          </ul>
-          <div>
-            <h3>Convert your {fileType}</h3>
-          </div>
-        </section>
-      )}
+
+      {file && <ConvertFile file={file} params={params} />}
     </>
   );
 }
