@@ -7,7 +7,7 @@ export const data = [
   {
     id: 2,
     name: "PPT file",
-    output: "ppt",
+    output: "pptx",
   },
   {
     id: 3,
@@ -17,7 +17,7 @@ export const data = [
   {
     id: 4,
     name: "JPEG file",
-    output: "jpeg",
+    output: "jpg",
   },
   {
     id: 5,
@@ -38,5 +38,10 @@ export const data = [
     id: 8,
     name: "HTML file",
     output: "html",
+  },
+  {
+    id: 9,
+    name: "Excel file",
+    output: "xlsx",
   },
 ];

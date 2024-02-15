@@ -69,8 +69,7 @@ function App() {
             gutterBottom
             sx={{ fontSize: "1.2rem", marginBottom: "2rem" }}
           >
-            Converting files has never been easier. No E-Mail address. No
-            waiting
+            No E-Mail address. No waiting
           </Typography>
 
           <StyledBox>
