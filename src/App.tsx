@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-import { Button, styled } from "@mui/material";
+import { Container, Button, styled } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ConvertFile from "./components/ConvertFile";
 import ConvertApi from "convertapi-js";
+import Logo from "./components/Logo";
 
 //authorization
 
@@ -34,25 +35,28 @@ function App() {
 
   return (
     <>
-      <section>
-        <h2>File conversion made easy</h2>
-        <p>Convert your files to any format</p>
-      </section>
+      <Container maxWidth="lg">
+        <Logo />
+        <section>
+          <h2>File conversion made easy</h2>
+          <p>Convert your files to any format</p>
+        </section>
 
-      <div>
-        <Button
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-        >
-          Upload file
-          <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-        </Button>
-      </div>
+        <div>
+          <Button
+            component="label"
+            role={undefined}
+            variant="contained"
+            tabIndex={-1}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload file
+            <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+          </Button>
+        </div>
 
-      {file && <ConvertFile file={file} params={params} />}
+        {file && <ConvertFile file={file} params={params} />}
+      </Container>
     </>
   );
 }
