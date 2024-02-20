@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { Container, Button, Box, Typography, styled } from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
 import ConvertFile from "./components/ConvertFile";
