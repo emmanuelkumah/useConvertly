@@ -26,6 +26,8 @@ Follow these steps to use the app
 
 ## Installation
 
-### Contributing
+## Contributing
+If you would like to contribute to this project, please contact me via e.fkumah@gmail.com
 
 ### Support
+If you have any issues or you will like to support. Please send email to e.fkumah@gmail.com
