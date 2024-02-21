@@ -1,9 +1,30 @@
-import { Container, Box, Grid, Typography, Button, Stack } from "@mui/material";
+import {
+  Container,
+  Box,
+  Grid,
+  Typography,
+  styled,
+  Button,
+  Stack,
+  Paper,
+} from "@mui/material";
 import Hero from "../components/Hero";
 import howItWorksImage from "../assets/howItWorksImg.png";
-import { theme } from "../theme";
+import { theme } from "../theme.ts";
+import { data } from "../homeData.ts";
 
 const Home = () => {
+  const StyledTypography = styled(Typography)(({ theme }) => ({
+    textAlign: "center",
+    paddingTop: "1rem",
+    fontSize: "1.2rem",
+    fontWeight: "800",
+    color: "#15616d",
+
+    borderRadius: "20px",
+    [theme.breakpoints.up("md")]: {},
+  }));
+
   return (
     <>
       <Container maxWidth="lg">
@@ -69,7 +90,54 @@ const Home = () => {
             </Grid>
           </Grid>
         </Box>
-        <h2>Website content 2</h2>
+        <Box sx={{ marginTop: "3rem" }}>
+          <Typography
+            variant="h2"
+            sx={{ textAlign: "center", textTransform: "capitalize" }}
+          >
+            Why use fileBox
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: "center",
+              textTransform: "capitalize",
+              marginTop: "1rem",
+              marginBottom: "1rem",
+            }}
+          >
+            This why lots of users come to us for the file needs
+          </Typography>
+          <Grid container spacing={3} sx={{}}>
+            {data.map((item) => (
+              <Grid item xs={12} sm={4} key={item.id}>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    border: "5px solid #15616d",
+                    borderRadius: "20px",
+                    "&:hover": {
+                      backgroundColor: "#f96c92",
+                      cursor: "pointer",
+                      transition: "background-color 0.5s",
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  <Box sx={{ textAlign: "center", fontSize: "2.5rem" }}>
+                    {item.icon}
+                  </Box>
+                  <StyledTypography variant="h3">
+                    {item.heading}
+                  </StyledTypography>
+                  <Typography variant="body1" sx={{ padding: "1rem" }}>
+                    {item.body}
+                  </Typography>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
         <h2>Testimonials</h2>
       </Container>
     </>
