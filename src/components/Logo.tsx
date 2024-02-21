@@ -1,14 +1,14 @@
-import logo from "../assets/useConvertly.png";
+import logo from "../assets/fileboxLogo.png";
 
 const Logo = () => {
   return (
-    <div>
+    <>
       <img
         src={logo}
-        alt="useConvertly"
+        alt="fileBox Logo"
         style={{ width: "200px", height: "auto" }}
       />
-    </div>
+    </>
   );
 };
 
