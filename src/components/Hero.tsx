@@ -8,19 +8,29 @@ const Hero = () => {
     },
   }));
 
-  const StyledHeroPaper = styled(Paper)(({ theme }) => ({
+  const StyledHeroPaper = styled(Paper)(() => ({
     padding: "2rem",
     borderRadius: "20px",
-    [theme.breakpoints.up("md")]: {},
+    borderTop: "7px solid #f50a4a",
   }));
   return (
     <>
       <img src={heroImage} alt="cover image" width="100%" />
       <StyledHeroPaper elevation={0}>
         <StyledHeroCaption variant="h2" sx={{ textAlign: "center" }}>
-          We empower individuals, solopreneurs and industries share and convert
-          files swiftly 🚀
+          We empower individuals, solopreneurs and industries
         </StyledHeroCaption>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            fontSize: "1.4rem",
+            fontWeight: "800",
+            color: "#15616D",
+          }}
+        >
+          Share, Sign and Convert files swiftly 🚀
+        </Typography>
         <Typography
           variant="body1"
           sx={{ textAlign: "center", padding: "20px" }}

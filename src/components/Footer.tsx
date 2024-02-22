@@ -1,11 +1,13 @@
 import { Typography, Box, Divider, styled } from "@mui/material";
 import Logo from "./Logo";
-import { theme } from "../theme";
 
 const Footer = () => {
   const StyledFooter = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
+    backgroundColor: "#0d3a41",
+    color: "#fff",
+    borderRadius: "20px",
 
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
