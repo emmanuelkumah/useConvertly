@@ -1,13 +1,16 @@
 import React from "react";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
+import { Container } from "@mui/material";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Navigation />
-      {children}
-      <Footer />
+      <Container maxWidth="lg">
+        <Navigation />
+        {children}
+        <Footer />
+      </Container>
     </>
   );
 };
