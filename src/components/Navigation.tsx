@@ -88,13 +88,16 @@ const Navigation = () => {
                 }}
               >
                 {pages.map((item) => (
-                  <Link to={item.to} style={{ textDecoration: "none" }}>
+                  <Link
+                    to={item.to}
+                    key={item.id}
+                    style={{ textDecoration: "none" }}
+                  >
                     <MenuItem
                       sx={{
                         width: "90vw",
                         backgroundColor: "#e6e8e6",
                       }}
-                      key={item.id}
                       onClick={handleCloseNavMenu}
                     >
                       <Typography textAlign="center">{item.menu}</Typography>
@@ -111,8 +114,12 @@ const Navigation = () => {
               }}
             >
               {pages.map((item) => (
-                <Link to={item.to} style={{ textDecoration: "none" }}>
-                  <Button key={item.id}>
+                <Link
+                  to={item.to}
+                  key={item.id}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button>
                     <Typography
                       variant="body1"
                       sx={{

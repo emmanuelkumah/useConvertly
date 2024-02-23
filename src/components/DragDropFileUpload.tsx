@@ -43,20 +43,23 @@ const DragDropFileUpload = ({ onFileUpload }: { onFileUpload: any }) => {
   return (
     <>
       <Paper
-        variant="outlined"
+        elevation={3} // Set the elevation level for the shadow
+        sx={{
+          marginTop: "2rem",
+          border: dragOver ? "2px dashed #000" : "2px dashed #f50a4a",
+          textAlign: "center",
+          cursor: "pointer",
+          padding: "2rem",
+          borderRadius: "10px",
+          background: dragOver ? "#eee" : "#fafafa",
+          boxShadow: "10px 10px 25px 0 rgba(0,0,0,.16)",
+        }}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        style={{
-          border: dragOver ? "2px dashed #000" : "2px dashed #aaa",
-          padding: 20,
-          textAlign: "center",
-          cursor: "pointer",
-          background: dragOver ? "#eee" : "#fafafa",
-        }}
       >
         <input
-          accept="image/*"
+          //accept="image/*"
           style={{ display: "none" }}
           id="raised-button-file"
           multiple
@@ -67,12 +70,19 @@ const DragDropFileUpload = ({ onFileUpload }: { onFileUpload: any }) => {
           <Box display="flex" flexDirection="column" alignItems="center">
             <IconButton
               color="primary"
-              aria-label="upload picture"
+              aria-label="upload file"
               component="span"
             >
               <CloudUploadIcon style={{ fontSize: 60 }} />
             </IconButton>
-            <Typography>
+            <Typography
+              variant="h3"
+              sx={{
+                fontSize: "0.8rem",
+                paddingTop: "2rem",
+                paddingBottom: "2rem",
+              }}
+            >
               Drag and drop files here or click to select files
             </Typography>
           </Box>
