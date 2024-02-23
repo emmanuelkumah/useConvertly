@@ -83,7 +83,6 @@ const FileConversion = () => {
 
           {file && <ConvertFile file={file} params={params} />}
           <HowItWorks />
-          <Footer />
         </Box>
       </Container>
     </>

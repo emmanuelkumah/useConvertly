@@ -1,12 +1,13 @@
 import Home from "./Pages/Home";
 import Layout from "./components/Layout";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Layout>
-        <Home />
-      </Layout>
+      {/* <Layout>
+        <Outlet />
+      </Layout> */}
     </>
   );
 }

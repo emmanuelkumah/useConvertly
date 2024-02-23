@@ -11,10 +11,26 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
-const pages = ["Home", "How it works", "Why Us"];
+const pages = [
+  {
+    id: 1,
+    menu: "Convert files",
+    to: "convert",
+  },
+  {
+    id: 2,
+    menu: "Transfer files",
+    to: "transfer",
+  },
+  {
+    id: 3,
+    menu: "Sign Files",
+    to: "sign",
+  },
+];
 
 const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -71,17 +87,19 @@ const Navigation = () => {
                   display: { xs: "block", md: "none", width: "100%" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem
-                    sx={{
-                      width: "90vw",
-                      backgroundColor: "#e6e8e6",
-                    }}
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                  >
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
+                {pages.map((item) => (
+                  <Link to={item.to} style={{ textDecoration: "none" }}>
+                    <MenuItem
+                      sx={{
+                        width: "90vw",
+                        backgroundColor: "#e6e8e6",
+                      }}
+                      key={item.id}
+                      onClick={handleCloseNavMenu}
+                    >
+                      <Typography textAlign="center">{item.menu}</Typography>
+                    </MenuItem>
+                  </Link>
                 ))}
               </Menu>
             </Box>
@@ -93,20 +111,22 @@ const Navigation = () => {
               }}
             >
               {pages.map((item) => (
-                <Button key={item}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#fff",
-                      textTransform: "capitalize",
-                      "&:hover": {
-                        color: "#15616D",
-                      },
-                    }}
-                  >
-                    {item}
-                  </Typography>
-                </Button>
+                <Link to={item.to} style={{ textDecoration: "none" }}>
+                  <Button key={item.id}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#fff",
+                        textTransform: "capitalize",
+                        "&:hover": {
+                          color: "#15616D",
+                        },
+                      }}
+                    >
+                      {item.menu}
+                    </Typography>
+                  </Button>
+                </Link>
               ))}
             </Box>
           </Toolbar>

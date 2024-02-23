@@ -1,4 +1,4 @@
-import { Typography, Paper, styled } from "@mui/material";
+import { Typography, Paper, styled, Box } from "@mui/material";
 import heroImage from "../assets/heroBanner.png";
 const Hero = () => {
   const StyledHeroCaption = styled(Typography)(({ theme }) => ({
@@ -14,7 +14,7 @@ const Hero = () => {
     borderTop: "7px solid #f50a4a",
   }));
   return (
-    <>
+    <Box id="home">
       <img src={heroImage} alt="cover image" width="100%" />
       <StyledHeroPaper elevation={0}>
         <StyledHeroCaption variant="h2" sx={{ textAlign: "center" }}>
@@ -41,7 +41,7 @@ const Hero = () => {
           deserunt magni adipisci assumenda quidem?
         </Typography>
       </StyledHeroPaper>
-    </>
+    </Box>
   );
 };
 

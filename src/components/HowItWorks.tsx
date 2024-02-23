@@ -1,11 +1,11 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Box } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 const HowItWorks = () => {
   return (
-    <>
+    <Box id="how">
       <Typography
         variant="h3"
         sx={{
@@ -107,7 +107,7 @@ const HowItWorks = () => {
           <Typography variant="body1">Download your converted file</Typography>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 

@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Box sx={{ marginTop: "4rem" }}>
+      <Box sx={{ marginTop: "4rem" }} id="home">
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Typography
@@ -88,7 +88,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ marginTop: "3rem" }}>
+      <Box sx={{ marginTop: "3rem" }} id="Why">
         <Typography
           variant="h2"
           sx={{ textAlign: "center", textTransform: "capitalize" }}

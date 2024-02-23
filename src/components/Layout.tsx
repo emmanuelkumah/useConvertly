@@ -6,10 +6,10 @@ import { Container } from "@mui/material";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Navigation />
-      <Container maxWidth="lg">{children}</Container>
-
-      <Footer />
+      <Container maxWidth="lg">
+        <Navigation />
+        {children}
+      </Container>
     </>
   );
 };
