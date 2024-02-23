@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-import { Container, Button, Box, Typography, styled } from "@mui/material";
+import {
+  Container,
+  Button,
+  Box,
+  Paper,
+  Typography,
+  styled,
+} from "@mui/material";
+import backgroundImage from "../assets/background.png";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import ConvertFile from "../components/ConvertFile";
 import ConvertApi from "convertapi-js";
@@ -46,23 +54,26 @@ const FileConversion = () => {
       params.add("File", e.target.files[0]);
     }
   };
+  const imageURL =
+    "https://cdn.pixabay.com/photo/2023/05/20/20/39/european-roller-8007340__340.jpg";
 
   return (
     <>
       <Container maxWidth="lg">
-        <Box sx={{ display: "grid", placeItems: "center" }}>
+        <Paper
+          sx={{ display: "grid", placeItems: "center", marginTop: "4rem" }}
+        >
           <Typography
             variant="h3"
             gutterBottom
-            sx={{ fontSize: "1.5rem", fontWeight: "700" }}
+            sx={{ fontSize: "1.5rem", fontWeight: "700", mt: "3rem" }}
           >
             File conversion made easy
           </Typography>
-          <Typography
-            variant="h5"
-            gutterBottom
-            sx={{ fontSize: "1.2rem", marginBottom: "2rem" }}
-          >
+          <Typography variant="body1" gutterBottom sx={{ fontSize: "1.2rem" }}>
+            Convert your files to any format.
+          </Typography>
+          <Typography variant="body1" sx={{ fontSize: "0.9rem " }}>
             No E-Mail address. No waiting
           </Typography>
 
@@ -82,8 +93,8 @@ const FileConversion = () => {
           </StyledBox>
 
           {file && <ConvertFile file={file} params={params} />}
-          <HowItWorks />
-        </Box>
+        </Paper>
+        <HowItWorks />
       </Container>
     </>
   );

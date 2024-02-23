@@ -4,9 +4,9 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import FileConversion from "./Pages/FileConversion";
 import Root from "./routes/Root.tsx";
 import Home from "./Pages/Home.tsx";
+import Convert from "./Pages/Convert.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "convert",
-        element: <FileConversion />,
+        element: <Convert />,
       },
     ],
   },

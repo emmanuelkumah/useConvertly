@@ -1,5 +1,5 @@
 import { Typography, Paper, styled, Box } from "@mui/material";
-import heroImage from "../assets/heroBanner.png";
+import heroImage from "../assets/banner.png";
 const Hero = () => {
   const StyledHeroCaption = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.up("md")]: {
@@ -15,7 +15,9 @@ const Hero = () => {
   }));
   return (
     <Box id="home">
-      <img src={heroImage} alt="cover image" width="100%" />
+      <Box sx={{ display: "grid", placeItems: "center" }}>
+        <img src={heroImage} alt="cover image" width="70%" />
+      </Box>
       <StyledHeroPaper elevation={0}>
         <StyledHeroCaption variant="h2" sx={{ textAlign: "center" }}>
           We empower individuals, solopreneurs and industries
