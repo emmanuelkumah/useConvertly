@@ -1,5 +1,4 @@
 import {
-  Container,
   Box,
   Grid,
   Typography,
@@ -44,10 +43,9 @@ const Home = () => {
             </Typography>
             <Typography variant="h2">How it Works?</Typography>
             <Typography variant="body1" sx={{ paddingTop: "1rem" }}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam,
-              repellat atque laborum asperiores tempore odio? Totam at
-              doloremque in distinctio modi perspiciatis ex enim consectetur, ut
-              autem quae ipsum aliquid.
+              To get started, drag and drop file or upload file from your
+              computer. You will specify the output format send the request and
+              let's handle the conversion magic
             </Typography>
             <Stack
               direction={{ xs: "column", sm: "row" }}
@@ -57,7 +55,7 @@ const Home = () => {
               <Button
                 variant="contained"
                 disableElevation
-                href="#"
+                href="/convert"
                 sx={{
                   borderRadius: "10px",
                   textTransform: "capitalize",
@@ -79,7 +77,7 @@ const Home = () => {
                   },
                 }}
               >
-                Transfer files for free
+                Transfer large files
               </Button>
             </Stack>
           </Grid>
@@ -106,7 +104,7 @@ const Home = () => {
         >
           This why lots of users come to us for the file needs
         </Typography>
-        <Grid container spacing={3} sx={{}}>
+        <Grid container spacing={3} sx={{ marginBottom: "4rem" }}>
           {data.map((item) => (
             <Grid item xs={12} sm={4} key={item.id}>
               <Paper
@@ -115,17 +113,19 @@ const Home = () => {
                   border: "5px solid #15616d",
                   borderRadius: "20px",
                   "&:hover": {
-                    backgroundColor: "#f96c92",
+                    backgroundColor: "#f5f5f5",
                     cursor: "pointer",
                     transition: "background-color 0.5s",
-                    color: "#fff",
+                    color: "#333",
                   },
                 }}
               >
                 <Box sx={{ textAlign: "center", fontSize: "2.5rem" }}>
                   {item.icon}
                 </Box>
-                <StyledTypography variant="h3">{item.heading}</StyledTypography>
+                <StyledTypography variant="h3" sx={{ fontWeight: "100" }}>
+                  {item.heading}
+                </StyledTypography>
                 <Typography variant="body1" sx={{ padding: "1rem" }}>
                   {item.body}
                 </Typography>

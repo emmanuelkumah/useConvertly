@@ -1,19 +1,10 @@
 import { useState } from "react";
 
-import {
-  Container,
-  Button,
-  Box,
-  Paper,
-  Typography,
-  styled,
-} from "@mui/material";
-import backgroundImage from "../assets/background.png";
+import { Container, Button, Paper, Typography, styled } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import ConvertFile from "../components/ConvertFile";
+// import ConvertFile from "../components/ConvertFile";
 import ConvertApi from "convertapi-js";
 import HowItWorks from "../components/HowItWorks";
-import Footer from "../components/Footer";
 
 export const convertAPI = ConvertApi.auth(import.meta.env.VITE_API_KEY);
 let params = convertAPI.createParams();
@@ -24,6 +15,7 @@ const FileConversion = () => {
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
+
     height: 1,
     overflow: "hidden",
     position: "absolute",
@@ -54,8 +46,6 @@ const FileConversion = () => {
       params.add("File", e.target.files[0]);
     }
   };
-  const imageURL =
-    "https://cdn.pixabay.com/photo/2023/05/20/20/39/european-roller-8007340__340.jpg";
 
   return (
     <>
@@ -92,9 +82,10 @@ const FileConversion = () => {
             </Button>
           </StyledBox>
 
-          {file && <ConvertFile file={file} params={params} />}
+          {/* {file && <ConvertFile file={file} params={params} />} */}
         </Paper>
         <HowItWorks />
+        
       </Container>
     </>
   );

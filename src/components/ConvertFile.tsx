@@ -56,9 +56,7 @@ const ConvertFile = ({ file, params }: { file: File; params: IParams }) => {
     convertFile(params);
   };
   const handleCloseModal = () => setOpen(false);
-  const handleRemoveFile = ()=> {
-    
-  }
+  const handleRemoveFile = () => {};
 
   const convertFile = async (params: IParams) => {
     try {
@@ -75,13 +73,6 @@ const ConvertFile = ({ file, params }: { file: File; params: IParams }) => {
     }
   };
 
-  const StyledBox = styled(Box)(({ theme }) => ({
-    width: "100%",
-
-    [theme.breakpoints.up("md")]: {
-      //   height: "50vh",
-    },
-  }));
   return (
     <>
       <Container maxWidth="lg">

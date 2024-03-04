@@ -14,12 +14,11 @@ const Convert = () => {
     setFile(file);
     params.add("File", file);
   };
-  console.log(file);
 
   return (
     <div>
       <Box sx={{ display: "grid", placeItems: "center", marginTop: "4rem" }}>
-        <Typography variant="h3" sx={{ fontSize: "1.2rem" }}>
+        <Typography variant="h3" sx={{ fontSize: "1.4rem", fontWeight: "700" }}>
           File Conversion
         </Typography>
         <Typography variant="body1">

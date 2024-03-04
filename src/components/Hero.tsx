@@ -1,5 +1,6 @@
 import { Typography, Paper, styled, Box } from "@mui/material";
 import heroImage from "../assets/banner.png";
+import { Link } from "react-router-dom";
 const Hero = () => {
   const StyledHeroCaption = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.up("md")]: {
@@ -31,16 +32,14 @@ const Hero = () => {
             color: "#15616D",
           }}
         >
-          Share, Sign and Convert files swiftly 🚀
+          Convert & Transfer files swiftly 🚀
         </Typography>
         <Typography
           variant="body1"
           sx={{ textAlign: "center", padding: "20px" }}
         >
-          fileBox is a web app the Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Fuga porro amet corporis ex, neque, maxime placeat
-          vel inventore expedita repellat incidunt unde quod aliquid fugit
-          deserunt magni adipisci assumenda quidem?
+          fileBox is a web app that empowers everyone to easily convert file
+          from one format to the other
         </Typography>
       </StyledHeroPaper>
     </Box>

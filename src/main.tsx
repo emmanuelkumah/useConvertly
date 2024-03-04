@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root.tsx";
 import Home from "./Pages/Home.tsx";
 import Convert from "./Pages/Convert.tsx";
+import FileTransfer from "./Pages/FileTransfer.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,16 +22,11 @@ const router = createBrowserRouter([
         path: "convert",
         element: <Convert />,
       },
+      {
+        path: "transfer",
+        element: <FileTransfer />,
+      },
     ],
-  },
-
-  {
-    path: "transfer",
-    element: "Transfer files",
-  },
-  {
-    path: "sign",
-    element: "Sign file",
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -5,7 +5,7 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 const HowItWorks = () => {
   return (
-    <Box id="how">
+    <Box id="how" sx={{ marginBottom: "2rem" }}>
       <Typography
         variant="h3"
         sx={{
@@ -55,7 +55,7 @@ const HowItWorks = () => {
               Step 1
             </Typography>
             <Typography variant="body1" sx={{ padding: "1rem" }}>
-              Select a file from your computer
+              Drag and drop file from computer
             </Typography>
           </Paper>
         </Grid>

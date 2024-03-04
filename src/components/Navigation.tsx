@@ -25,11 +25,7 @@ const pages = [
     menu: "Transfer files",
     to: "transfer",
   },
-  {
-    id: 3,
-    menu: "Sign Files",
-    to: "sign",
-  },
+
 ];
 
 const Navigation = () => {
@@ -58,16 +54,18 @@ const Navigation = () => {
                 color="inherit"
               >
                 <MenuIcon />
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#fff",
-                    fontFamily: "Open Sans",
-                    fontWeight: "800",
-                  }}
-                >
-                  FileBox
-                </Typography>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#fff",
+                      fontFamily: "Open Sans",
+                      fontWeight: "800",
+                    }}
+                  >
+                    FileBox
+                  </Typography>
+                </Link>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -91,7 +89,7 @@ const Navigation = () => {
                   <Link
                     to={item.to}
                     key={item.id}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "#000" }}
                   >
                     <MenuItem
                       sx={{
