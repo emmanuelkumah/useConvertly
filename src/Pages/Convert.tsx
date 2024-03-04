@@ -29,7 +29,7 @@ const Convert = () => {
         </Typography>
       </Box>
       <DragDropFileUpload onFileUpload={handleFileUpload} />
-      {file && <ConvertFile file={file} params={params} />}
+      {file && <ConvertFile file={file} setFile={setFile} params={params} />}
 
       <HowItWorks />
     </div>

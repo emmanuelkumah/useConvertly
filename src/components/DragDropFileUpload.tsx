@@ -43,7 +43,7 @@ const DragDropFileUpload = ({ onFileUpload }: { onFileUpload: any }) => {
   return (
     <>
       <Paper
-        elevation={3} // Set the elevation level for the shadow
+        elevation={3}
         sx={{
           marginTop: "2rem",
           border: dragOver ? "2px dashed #000" : "2px dashed #f50a4a",
@@ -59,7 +59,6 @@ const DragDropFileUpload = ({ onFileUpload }: { onFileUpload: any }) => {
         onDrop={handleDrop}
       >
         <input
-          //accept="image/*"
           style={{ display: "none" }}
           id="raised-button-file"
           multiple

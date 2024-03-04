@@ -26,13 +26,22 @@ import { data } from "../conversionFormat";
 
 type IParams = any;
 
-const ConvertFile = ({ file, params }: { file: File; params: IParams }) => {
+const ConvertFile = ({
+  file,
+  params,
+  setFile,
+}: {
+  file: File;
+  params: IParams;
+  setFile: any;
+}) => {
   const [fileOutput, setFileOuput] = useState("");
   const [status, setStatus] = useState<
     "initial" | "converting" | "success" | "fail"
   >("initial");
   const [downloaFile, setDownloadFile] = useState<string>("#");
   const [open, setOpen] = useState(false);
+  const [removeFile, setRemoveFile] = useState(false);
 
   const initialFileFormat: any = file.name.split(".").pop();
 
@@ -56,7 +65,6 @@ const ConvertFile = ({ file, params }: { file: File; params: IParams }) => {
     convertFile(params);
   };
   const handleCloseModal = () => setOpen(false);
-  const handleRemoveFile = () => {};
 
   const convertFile = async (params: IParams) => {
     try {
@@ -75,121 +83,120 @@ const ConvertFile = ({ file, params }: { file: File; params: IParams }) => {
 
   return (
     <>
-      <Container maxWidth="lg">
-        <Paper>
-          <Grid
-            container
-            spacing={2}
-            sx={{
-              backgroundColor: "#fff",
-              marginTop: "2rem",
-              border: "1px solid #333",
-              borderRadius: "10px",
-            }}
-          >
-            <Grid item xs={12} sm={3} sx={{ paddingRight: "12px" }}>
-              <Stack direction="row" spacing={1}>
-                <DescriptionIcon />
-                <Typography variant="h3" sx={{ fontSize: "0.8rem" }}>
-                  {file.name}
-                </Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={12} sm={3} sx={{ paddingRight: "12px" }}>
-              <Stack direction="row" spacing={1}>
-                <TopicIcon />
-                <Typography variant="h3" sx={{ fontSize: "0.8rem" }}>
-                  File Size:
-                  {`${Math.floor(file.size / 1000)} KB`}
-                </Typography>
-              </Stack>
-            </Grid>
+      {!removeFile && (
+        <Container maxWidth="lg">
+          <Paper>
             <Grid
-              item
-              xs={12}
-              sm={3}
-              sx={{ paddingRight: "32px", paddingBottom: "32px" }}
+              container
+              spacing={2}
+              sx={{
+                backgroundColor: "#fff",
+                marginTop: "2rem",
+                border: "1px solid #333",
+                borderRadius: "10px",
+              }}
             >
-              <FormControl fullWidth>
-                <InputLabel id="select-label">Convert to</InputLabel>
-                <Select
-                  labelId="simple-select-label"
-                  id="select-format"
-                  value={fileOutput}
-                  label="Format"
-                  onChange={handleChange}
-                >
-                  {data.map((file) => (
-                    <MenuItem key={file.id} value={file.output}>
-                      {file.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Stack>
-                <Button
-                  variant="contained"
-                  onClick={handleFileConversion}
-                  endIcon={<CloudSyncIcon />}
-                  sx={{ marginBottom: "1rem", textTransform: "capitalize" }}
-                >
-                  Convert file
-                </Button>
-                <IconButton aria-label="delete" onClick={handleRemoveFile}>
-                  <DeleteIcon />
-                </IconButton>
-              </Stack>
-            </Grid>
-          </Grid>
-        </Paper>
-
-        {status === "converting" && (
-          <Box sx={{ width: "100%", marginTop: "2rem" }}>
-            <LinearProgress />
-          </Box>
-        )}
-        {status === "success" && (
-          <Container maxWidth="lg">
-            <Modal
-              open={open}
-              onClose={handleCloseModal}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Typography
-                  id="modal-modal-title"
-                  variant="h6"
-                  component="h2"
-                  sx={{ textAlign: "center", paddingBottom: "2rem" }}
-                >
-                  Hurray! File converted successfully
-                </Typography>
-                <Box sx={{ display: "grid", placeItems: "center" }}>
-                  <Button
-                    href={downloaFile}
-                    variant="contained"
-                    sx={{ textTransform: "capitalize" }}
-                    startIcon={<CloudSyncIcon />}
+              <Grid item xs={12} sm={3} sx={{ paddingRight: "12px" }}>
+                <Stack direction="row" spacing={1}>
+                  <DescriptionIcon />
+                  <Typography variant="h3" sx={{ fontSize: "0.8rem" }}>
+                    {file.name}
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={12} sm={3} sx={{ paddingRight: "12px" }}>
+                <Stack direction="row" spacing={1}>
+                  <TopicIcon />
+                  <Typography variant="h3" sx={{ fontSize: "0.8rem" }}>
+                    File Size:
+                    {`${Math.floor(file.size / 1000)} KB`}
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={3}
+                sx={{ paddingRight: "32px", paddingBottom: "32px" }}
+              >
+                <FormControl fullWidth>
+                  <InputLabel id="select-label">Convert to</InputLabel>
+                  <Select
+                    labelId="simple-select-label"
+                    id="select-format"
+                    value={fileOutput}
+                    label="Format"
+                    onChange={handleChange}
                   >
-                    Download file
+                    {data.map((file) => (
+                      <MenuItem key={file.id} value={file.output}>
+                        {file.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <Stack>
+                  <Button
+                    variant="contained"
+                    onClick={handleFileConversion}
+                    endIcon={<CloudSyncIcon />}
+                    sx={{ marginBottom: "1rem", textTransform: "capitalize" }}
+                  >
+                    Convert file
                   </Button>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Paper>
+
+          {status === "converting" && (
+            <Box sx={{ width: "100%", marginTop: "2rem" }}>
+              <LinearProgress />
+            </Box>
+          )}
+          {status === "success" && (
+            <Container maxWidth="lg">
+              <Modal
+                open={open}
+                onClose={handleCloseModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                    sx={{ textAlign: "center", paddingBottom: "2rem" }}
+                  >
+                    Hurray! File converted successfully
+                  </Typography>
+                  <Box sx={{ display: "grid", placeItems: "center" }}>
+                    <Button
+                      href={downloaFile}
+                      variant="contained"
+                      sx={{ textTransform: "capitalize" }}
+                      startIcon={<CloudSyncIcon />}
+                    >
+                      Download file
+                    </Button>
+                  </Box>
                 </Box>
-              </Box>
-            </Modal>
-          </Container>
-        )}
-        {status === "fail" && (
-          <Typography
-            variant="h3"
-            sx={{ fontSize: "1rem", color: "red", marginTop: "2rem" }}
-          >
-            Error Converting file. Please try again
-          </Typography>
-        )}
-      </Container>
+              </Modal>
+            </Container>
+          )}
+          {status === "fail" && (
+            <Typography
+              variant="h3"
+              sx={{ fontSize: "1rem", color: "red", marginTop: "2rem" }}
+            >
+              Error Converting file. Please try again
+            </Typography>
+          )}
+        </Container>
+      )}
     </>
   );
 };
