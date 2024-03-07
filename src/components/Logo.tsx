@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/fileboxLogo.png";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import FileOpenIcon from "@mui/icons-material/FileOpen";
 
 const Logo = () => {
   return (
     <>
       <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-        <Link to="/">
-          <img
-            src={logo}
-            alt="fileBox Logo"
-            style={{ width: "200px", height: "auto" }}
-          />
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "#fff",
+              fontFamily: "Martel Sans",
+              fontSize: "1.5rem",
+            }}
+          >
+            <FileOpenIcon />
+            File
+            <span style={{ fontWeight: "100", fontFamily: "Open Sans" }}>
+              Box
+            </span>
+          </Typography>
         </Link>
       </Box>
     </>

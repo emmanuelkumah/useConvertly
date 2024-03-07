@@ -4,7 +4,6 @@ import {
   Grid,
   Container,
   Typography,
-  styled,
   Button,
   Paper,
   InputLabel,
@@ -144,16 +143,15 @@ const ConvertFile = ({
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Stack>
-                <Button
-                  variant="contained"
-                  onClick={handleFileConversion}
-                  endIcon={<CloudSyncIcon />}
-                  sx={{ marginBottom: "1rem", textTransform: "capitalize" }}
-                >
-                  Convert file
-                </Button>
-              </Stack>
+              <Button
+                variant="contained"
+                size="medium"
+                onClick={handleFileConversion}
+                endIcon={<CloudSyncIcon />}
+                sx={{ marginBottom: "1rem", textTransform: "capitalize" }}
+              >
+                Convert file
+              </Button>
             </Grid>
           </Grid>
         </Paper>

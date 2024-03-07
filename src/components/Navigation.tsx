@@ -20,11 +20,7 @@ const pages = [
     menu: "Convert files",
     to: "convert",
   },
-  {
-    id: 2,
-    menu: "Transfer files",
-    to: "transfer",
-  },
+
 
 ];
 
