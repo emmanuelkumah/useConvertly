@@ -1,6 +1,8 @@
-# useConvertly
+# FileBox
 
-useConvertly is a web app that enables users to convert file into multiple formats.
+![Image](src/assets/FileBoxScreenshot.png)
+
+FileBox is one-stop app for conversion and transfer of large files. This version support converting files into various formats
 
 - Docs
 - Pdf
@@ -8,26 +10,33 @@ useConvertly is a web app that enables users to convert file into multiple forma
 - csv
 - html
 - webp
+- jpg
+- png
 
 Follow these steps to use the app
 
-- Upload the file from your computer
+- Drag and drop the file from your computer
 - Choose the output format
 - Convert and download file
 
-[Click here to start usage](https://useconvertly.netlify.app/)
+[Click here to start usage](https://fileboxs.netlify.app/)
 
 ## Features
 
-- Convert pdf to word document
-- Convert word to png
-- Convert png to pptx
-- Convert jpg to word etc
+- Convert file to various format
+- Transfer or share larger files (coming soon)
 
 ## Installation
 
-## Contributing
-If you would like to contribute to this project, please contact me via e.fkumah@gmail.com
+- git clone https://github.com/emmanuelkumah/useConvertly.git
+- In your development terminal enter the command npm install
+- Enter the command npm run dev to run the app
 
-### Support
-If you have any issues or you will like to support. Please send email to e.fkumah@gmail.com
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## Roadmap
+
+- Transfer or share large files
