@@ -85,7 +85,6 @@ const FileConversion = () => {
           {/* {file && <ConvertFile file={file} params={params} />} */}
         </Paper>
         <HowItWorks />
-        
       </Container>
     </>
   );

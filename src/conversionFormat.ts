@@ -42,6 +42,11 @@ export const data = [
   {
     id: 9,
     name: "Excel file",
-    output: "xlsx",
+    output: "xls",
+  },
+  {
+    id: 10,
+    name: "SVG file",
+    output: "svg",
   },
 ];
