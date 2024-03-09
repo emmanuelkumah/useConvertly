@@ -2,7 +2,7 @@
 
 ![Image](src/assets/FileBoxScreenshot.png)
 
-FileBox is one-stop app for conversion and transfer of large files. This version support converting files into various formats
+FileBox is one-stop app for conversion and transfer of large files. This version enables users who convert a file into various formats. It currently support conversion into these formats
 
 - Docs
 - Pdf
