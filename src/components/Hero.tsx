@@ -1,5 +1,7 @@
 import { Typography, Paper, styled, Box } from "@mui/material";
 import heroImage from "../assets/banner.png";
+
+
 const Hero = () => {
   const StyledHeroCaption = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.up("md")]: {

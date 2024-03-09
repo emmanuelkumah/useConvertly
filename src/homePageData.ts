@@ -5,6 +5,7 @@ export const data = [
     heading: `Share large files`,
     body: "FileBox enables you to send large files to your clients and customers. There is no need to register or install anything.",
   },
+  
   {
     id: 2,
     icon: "☁️",

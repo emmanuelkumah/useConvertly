@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { Container, Box } from "@mui/material";
 
-const Root = () => {
+const RootLayout = () => {
   return (
     <Box sx={{ position: "relative" }}>
       <Navigation />
@@ -15,4 +15,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default RootLayout;

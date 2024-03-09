@@ -1,26 +1,16 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  styled,
-  Button,
-  Stack,
-  Paper,
-} from "@mui/material";
+import { Box, Grid, Typography, styled, Button, Paper } from "@mui/material";
 import Hero from "../components/Hero";
 import howItWorksImage from "../assets/howItWorksImg.png";
-import { data } from "../homeData.ts";
+import { data } from "../homePageData.ts";
 
 const Home = () => {
-  const StyledTypography = styled(Typography)(({ theme }) => ({
+  const StyledTypography = styled(Typography)(() => ({
     textAlign: "center",
     paddingTop: "1rem",
     fontSize: "1.2rem",
     fontWeight: "800",
     color: "#15616d",
-
     borderRadius: "20px",
-    [theme.breakpoints.up("md")]: {},
   }));
 
   return (
@@ -43,43 +33,26 @@ const Home = () => {
             </Typography>
             <Typography variant="h2">How it Works?</Typography>
             <Typography variant="body1" sx={{ paddingTop: "1rem" }}>
-              To get started, drag and drop file or upload file from your
-              computer. You will specify the output format send the request and
-              let's handle the conversion magic
+              To get started, drag and drop the file or upload the file from
+              your computer. On completion, specify the output format for the
+              file send the request and let's handle the conversion magic
             </Typography>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={2}
-              sx={{ marginTop: "1.5rem" }}
+
+            <Button
+              variant="contained"
+              disableElevation
+              href="/convert"
+              sx={{
+                marginTop: "2rem",
+                borderRadius: "10px",
+                textTransform: "capitalize",
+                "&:hover": {
+                  color: "#fff",
+                },
+              }}
             >
-              <Button
-                variant="contained"
-                disableElevation
-                href="/convert"
-                sx={{
-                  borderRadius: "10px",
-                  textTransform: "capitalize",
-                  "&:hover": {
-                    color: "#fff",
-                  },
-                }}
-              >
-                Convert Files for free
-              </Button>
-              <Button
-                variant="outlined"
-                href="#"
-                sx={{
-                  borderRadius: "10px",
-                  textTransform: "capitalize",
-                  "&:hover": {
-                    color: "#080708",
-                  },
-                }}
-              >
-                Transfer large files
-              </Button>
-            </Stack>
+              Convert Files for free
+            </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
             <img src={howItWorksImage} width="100%" alt="How fileBox works" />
@@ -102,7 +75,7 @@ const Home = () => {
             marginBottom: "1rem",
           }}
         >
-          This why lots of users come to us for the file needs
+          This is why lots of users come to us for their file needs
         </Typography>
         <Grid container spacing={3} sx={{ marginBottom: "4rem" }}>
           {data.map((item) => (

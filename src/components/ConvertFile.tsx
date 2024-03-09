@@ -19,7 +19,7 @@ import TopicIcon from "@mui/icons-material/Topic";
 import CloudSyncIcon from "@mui/icons-material/CloudSync";
 
 import { convertAPI } from "../Pages/Convert";
-import { data } from "../conversionFormat";
+import { data } from "../fileOutputFormats";
 
 type IParams = any;
 

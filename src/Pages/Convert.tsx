@@ -5,8 +5,11 @@ import HowItWorks from "../components/HowItWorks";
 import ConvertApi from "convertapi-js";
 import ConvertFile from "../components/ConvertFile";
 
+//Authorized access to the convertAPI
+
 export const convertAPI = ConvertApi.auth(import.meta.env.VITE_API_KEY);
 let params = convertAPI.createParams();
+
 const Convert = () => {
   const [file, setFile] = useState<File | null>(null);
 
